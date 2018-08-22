@@ -55,6 +55,6 @@ export class SurveyLanguage {
 
   static bmwsWhichDrivenQuestion = 'Which BMW did you drive?';
 
-  static bmwModelRegex = RegExp('([M|m][0-9]{3}[D|d|I|i])|(([X|x]|[Z|z])[0-9])');
+  static bmwModelRegex = RegExp('([M|m]*[0-9]{3}[D|d|I|i]*)|(([X|x]|[Z|z])[0-9])');
 
 }
