@@ -1,0 +1,114 @@
+<div class="card-container">
+
+  <mat-card class="card-setup card-setup-0">
+    <mat-card-content>
+      <mat-progress-bar
+          [color]="color"
+          [mode]="determinate"
+          [value]="progress">
+      </mat-progress-bar>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card-setup card-setup-1" *ngIf="currentStep === StepEnum.Step1">
+    <mat-card-header>
+      <mat-card-title>{{ SurveyLanguage.step[1] }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p *ngFor="let p of SurveyLanguage.introLetter" [innerHTML]="p"></p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="nextStep()">{{ SurveyLanguage.buttons.next }}</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="card-setup card-setup-2" *ngIf="currentStep === StepEnum.Step2">
+    <mat-card-header>
+      <mat-card-title>{{ SurveyLanguage.step[2] }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-form-field class="vertical-group">
+        <input matInput type="number" min="0" max="100" placeholder="{{ SurveyLanguage.ageQuestion }}" required [(ngModel)]="age">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="{{ SurveyLanguage.genderQuestion }}" required [(ngModel)]="gender">
+          <mat-option *ngFor="let gender of SurveyLanguage.genderAnswers; let i = index" [value]="i">
+            {{ gender }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="SurveyValidate.step2(this) ===  StepStatusEnum.Invalid" (click)="nextStep()">{{ SurveyLanguage.buttons.next }}</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="card-setup card-setup-3" *ngIf="currentStep === StepEnum.Step3">
+    <mat-card-header>
+      <mat-card-title>{{ SurveyLanguage.step[3] }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div class="vertical-group">
+        <p>{{ SurveyLanguage.haveLicenseQuestion }}</p>
+        <mat-radio-group class="vertical-radio-group" required [(ngModel)]="haveLicense">
+          <mat-radio-button *ngFor="let answer of SurveyLanguage.haveLicenseAnswers; let i = index" [value]="i">
+          {{ answer }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="vertical-group" *ngIf="age >= 18 && age <=25">
+        <p>{{ SurveyLanguage.firstCarQuestion }}</p>
+        <mat-radio-group class="vertical-radio-group" required [(ngModel)]="firstCar">
+          <mat-radio-button *ngFor="let answer of SurveyLanguage.firstCarAnswers; let i = index" [value]="i">
+          {{ answer }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="SurveyValidate.step3(this) ===  StepStatusEnum.Invalid" (click)="nextStep()">{{ SurveyLanguage.buttons.next }}</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="card-setup card-setup-4" *ngIf="currentStep === StepEnum.Step4">
+    <mat-card-header>
+      <mat-card-title>{{ SurveyLanguage.step[4] }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <p>{{ SurveyLanguage.driveTrainQuestion }}</p>
+      <mat-radio-group class="vertical-radio-group" required [(ngModel)]="driveTrain">
+        <mat-radio-button *ngFor="let answer of SurveyLanguage.driveTrainAnswers; let i = index" [value]="i">
+        {{ answer }}
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <p>{{ SurveyLanguage.driftingQuestion }}</p>
+      <mat-radio-group class="vertical-radio-group" required [(ngModel)]="drifting">
+        <mat-radio-button *ngFor="let answer of SurveyLanguage.driftingAnswers; let i = index" [value]="i">
+        {{ answer }}
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field class="vertical-group">
+        <input matInput type="number" min="0" placeholder="{{ SurveyLanguage.bmwsDrivenQuestion }}" required [(ngModel)]="bmwsDriven">
+      </mat-form-field>
+
+      <div class="vertical-group" *ngFor="let dummy of ' '.repeat(bmwsDriven).split(''), let i = index">
+        <mat-form-field class="vertical-group">
+          <input matInput type="text" min="0" placeholder="{{ SurveyLanguage.bmwsWhichDrivenQuestion }}" required [(ngModel)]="bmwsWhichDriven[i]" [pattern]="SurveyLanguage.bmwModelRegex">
+        </mat-form-field>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="SurveyValidate.step4(this) ===  StepStatusEnum.Invalid" (click)="nextStep()">{{ SurveyLanguage.buttons.next }}</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

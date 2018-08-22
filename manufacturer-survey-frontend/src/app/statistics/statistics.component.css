@@ -1,0 +1,25 @@
+.card-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.card-container > .card-statistic {
+  width: 560px;
+}
+
+.card-statistic:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.card-model-distribution .statistic {
+  display: flex;
+
+  flex-direction: column;
+
+  width: 100%;
+}

@@ -1,0 +1,69 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+  overflow: hidden;
+}
+
+.show-portrait,
+.show-landscape {
+  display: none;
+}
+
+.vertical-group,
+.vertical-group.mat-form-field,
+.vertical-radio-group > .mat-radio-button {
+  display: block;
+}
+
+.vertical-group:not(:last-child),
+.vertical-group.mat-form-field:not(:last-child),
+.vertical-radio-group > .mat-radio-button:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.card-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.card-container > .card-setup {
+  width: 560px;
+}
+.card-container > .card-setup:not(.card-setup-0) > .mat-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.card-container > .card-setup > .mat-card-actions {
+  text-align: right;
+}
+
+@media (orientation: portrait) {
+  .show-portrait {
+    display: block;
+  }
+}
+
+@media (orientation: landscape) {
+  .show-landscape {
+    display: block;
+  }
+
+  .card-container > .card-setup > .mat-card-content.card-landscape {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-container > .card-setup > .mat-card-content.card-landscape > *:not(:last-child) {
+    margin-right: 15px;
+  }
+}

@@ -1,0 +1,14 @@
+<div class="card-container">
+  <mat-card class="card-setup card-thanks">
+    <mat-card-header>
+      <mat-card-title>Thanks!</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image class="show-portrait" src="https://c1.staticflickr.com/9/8482/8207217930_f7d0e18525.jpg" alt="Photo of a BMW">
+    <mat-card-content class="card-landscape">
+      <img class="show-landscape" src="https://c1.staticflickr.com/9/8482/8207217930_f7d0e18525.jpg" alt="Photo of a BMW">
+      <p *ngFor="let p of messages" [innerHtml]="p"></p>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+</div>

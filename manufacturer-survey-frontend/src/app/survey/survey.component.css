@@ -1,0 +1,3 @@
+.card-setup:not(:last-child) {
+  margin-bottom: 15px;
+}

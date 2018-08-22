@@ -1,0 +1,126 @@
+<div *ngIf="loaded; then showCards else showProgress"></div>
+
+<ng-template #showProgress>
+
+  <div class="card-container">
+
+    <mat-card>
+      <mat-card-content> <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+</ng-template>
+
+<ng-template #showCards>
+
+  <div class="card-container">
+
+    <mat-card class="card-statistic card-adolescents">
+      <mat-card-header>
+        <mat-card-title>Adolescents Participants: {{ computingWatcher.adolescents }} ( {{ formatPercent(computingWatcher.adolescentsPercent) }} %)</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-progress-bar
+            [color]="color"
+            [mode]="determinate"
+            [value]="computingWatcher.adolescentsPercent">
+        </mat-progress-bar>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card-statistic card-unlicensed">
+      <mat-card-header>
+        <mat-card-title>Unlicensed Participants: {{ computingWatcher.unlicensed }} ( {{ formatPercent(computingWatcher.unlicensedPercent) }} %)</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-progress-bar
+            [color]="color"
+            [mode]="determinate"
+            [value]="computingWatcher.unlicensedPercent">
+        </mat-progress-bar>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card-statistic card-first-timers">
+      <mat-card-header>
+        <mat-card-title>First-Time Participants: {{ computingWatcher.firstTimers }} ( {{ formatPercent(computingWatcher.firstTimersPercent) }} %)</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-progress-bar
+            [color]="color"
+            [mode]="determinate"
+            [value]="computingWatcher.firstTimersPercent">
+        </mat-progress-bar>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card-statistic card-targetables">
+      <mat-card-header>
+        <mat-card-title>Targetable Participants: {{ computingWatcher.targetables }} ( {{ formatPercent(computingWatcher.targetablesPercent) }} %)</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-progress-bar
+            [color]="color"
+            [mode]="determinate"
+            [value]="computingWatcher.targetablesPercent">
+        </mat-progress-bar>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card-statistic card-targetable-drifters">
+      <mat-card-header>
+        <mat-card-title>Targetable Drifter Participants: {{ computingWatcher.targetableDrifters }} ( {{ formatPercent(computingWatcher.targetableDriftersPercentage) }} %)</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-progress-bar
+            [color]="color"
+            [mode]="determinate"
+            [value]="computingWatcher.targetableDriftersPercentage">
+        </mat-progress-bar>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card-statistic card-targetable-drifters">
+      <mat-card-header>
+        <mat-card-title>Targetable FWD or Don't Know: {{ computingWatcher.targetableFWDorDontKnow }} ( {{ formatPercent(computingWatcher.targetableFWDorDontKnowPercentage) }} %)</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-progress-bar
+            [color]="color"
+            [mode]="determinate"
+            [value]="computingWatcher.targetableFWDorDontKnowPercentage">
+        </mat-progress-bar>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card-statistic card-targetable-drifters">
+      <mat-card-header>
+        <mat-card-title>Average cars per driver: {{ computingWatcher.averageBMWsPerDriver }}</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+
+    <mat-card class="card-statistic card-model-distribution">
+      <mat-card-header>
+        <mat-card-title>Model Distribution</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+         <mat-list-item *ngFor="let model of computingWatcher.modelsDrivenKeys">
+          <div class="statistic">
+            <p>x{{ computingWatcher.modelsDrivenCount[model] }} {{ model }}</p>
+            <mat-progress-bar
+                [color]="color"
+                [mode]="determinate"
+                [value]="computingWatcher.modelsDrivenPercentage[model]">
+            </mat-progress-bar>
+          </div>
+         </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+</ng-template>
