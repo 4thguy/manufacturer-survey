@@ -65,7 +65,7 @@ class Survey
     protected $bmwsDriven;
 
     /**
-     * @Type("[]")
+     * @Type("string")
      */
     protected $bmwsWhichDriven;
 

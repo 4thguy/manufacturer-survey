@@ -57,7 +57,7 @@ export class SurveyComponent implements OnInit {
       driveTrain: this.driveTrain,
       drifting: this.drifting,
       bmwsDriven: this.bmwsDriven,
-      bmwsWhichDriven: this.bmwsWhichDriven,
+      bmwsWhichDriven: this.bmwsWhichDriven.join(','),
     }
     this.http.post<any>('/api/survey', pkg, httpOptions)
       .subscribe(() => {

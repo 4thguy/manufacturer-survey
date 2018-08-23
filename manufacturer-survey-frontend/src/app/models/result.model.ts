@@ -6,7 +6,7 @@ export class Result {
   driveTrain: number;
   drifting: number;
   bmwsDriven: number;
-  bmwsWhichDriven: string[];
+  bmwsWhichDriven: string;
 
   constructor(
     age: number,
@@ -16,7 +16,7 @@ export class Result {
     driveTrain: number,
     drifting: number,
     bmwsDriven: number,
-    bmwsWhichDriven: string[],
+    bmwsWhichDriven: string,
     ) {
     this.age = age;
     this.gender = gender;

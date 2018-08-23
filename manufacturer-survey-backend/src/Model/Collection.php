@@ -15,7 +15,7 @@ class Collection
 
     /**
      * @Type("array")
-     * @Items(@Ref("App\Model\Population"))
+     * @Items(@Ref("App\Model\Survey"))
      */
     protected $entry;
 

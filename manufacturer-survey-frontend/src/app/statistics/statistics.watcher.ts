@@ -105,15 +105,16 @@ export class StatisticsWatcher {
   watchModelDistribution(result: Result) {
     if (StatisticsWatcher.isTargetable(result)) {
       if (StatisticsWatcher.driveBMW(result)) {
-        for (var i in result.bmwsWhichDriven) {
-          var model = result.bmwsWhichDriven[i].toUpperCase();
+        var bmwsWhichDriven = result.bmwsWhichDriven.split(',');
+        this.modelsDrivenTotal += bmwsWhichDriven.length;
+        for (var i in bmwsWhichDriven) {
+          var model = bmwsWhichDriven[i].toUpperCase();
           if (this.modelsDrivenCount[model] === undefined) {
             this.modelsDrivenKeys.push(model);
             this.modelsDrivenCount[model] = 0;
             this.modelsDrivenPercentage[model] = 0;
           }
           this.modelsDrivenCount[model]++;
-          this.modelsDrivenTotal += result.bmwsWhichDriven.length;
           this.modelsDrivenPercentage[model] = StatisticsWatcher.calculatePercentage(this.modelsDrivenCount[model], this.modelsDrivenTotal);
         }
       }
